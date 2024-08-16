@@ -18,3 +18,7 @@ params:
     buttons:
       - name: Github
         url: "https://github.com/bcbobin/"
+      - name: Resume
+        url: "http://localhost:1313/files/Resume_FullTime_2024.pdf"
+      - name: Contact
+        url: "mailto:contact@bogdanbobin.com"
