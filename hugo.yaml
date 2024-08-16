@@ -3,9 +3,7 @@ languageCode: en-us
 title: Bogdan Bobin
 theme: ["PaperMod"]
 
-
 params:
-
   images: ["images/papermod-cover.png"]
   profileMode:
     enabled: true
@@ -19,6 +17,6 @@ params:
       - name: Github
         url: "https://github.com/bcbobin/"
       - name: Resume
-        url: "http://localhost:1313/files/Resume_FullTime_2024.pdf"
+        url: "files/Resume_FullTime_2024.pdf"
       - name: Contact
         url: "mailto:contact@bogdanbobin.com"
