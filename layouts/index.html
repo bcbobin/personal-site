@@ -17,11 +17,11 @@
     <meta name="description" content="{{ site.Params.description }}">
     <meta name="author" content="{{ site.Params.author }}">
     <link rel="canonical" href="{{ .Permalink }}">
-    <link rel="icon" href="{{ "favicon.ico" | absURL }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | absURL }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | absURL }}">
-    <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | absURL }}">
-    <link rel="manifest" href="{{ "site.webmanifest" | absURL }}">
+    <link rel="icon" href="{{ partial "static-url.html" "favicon.ico" }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ partial "static-url.html" "favicon-16x16.png" }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ partial "static-url.html" "favicon-32x32.png" }}">
+    <link rel="apple-touch-icon" href="{{ partial "static-url.html" "apple-touch-icon.png" }}">
+    <link rel="manifest" href="{{ partial "static-url.html" "site.webmanifest" }}">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ site.Params.author }}">
     <meta property="og:title" content="{{ site.Title }}">
@@ -34,6 +34,9 @@
     <meta name="twitter:image" content="{{ index site.Params.images 0 | absURL }}">
     {{- partial "templates/schema_json.html" . }}
     {{- $img := resources.Get "images/profile-pic.webp" }}
+    {{- /* Publish the plain path too: the Person schema points at it */ -}}
+    {{- $_ := $img.RelPermalink }}
+    {{- $img = $img | fingerprint }}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">

@@ -1,0 +1,3 @@
+{{- /* Absolute URL for a file in static/ with a content hash, so browsers refetch it whenever it changes.
+       Usage: partial "static-url.html" "favicon.ico" */ -}}
+{{- printf "%s?v=%s" (. | absURL) (substr (readFile (printf "static/%s" .) | md5) 0 8) -}}
