@@ -10,6 +10,16 @@ about: >-
   playing guitar, running a D&D table, or losing at chess.
 resume: /files/Resume_FullTime_2024.pdf
 
+# "At a glance" panel beside the About text
+glance:
+  - label: Currently
+    value: Software Developer at Miovision
+  - label: Education
+    value: BASc Computer Engineering, University of Waterloo
+  - label: Speaks
+    value: English, Romanian, Spanish
+skills: [TypeScript, Angular, Next.js, React, Kafka, Java / Spring, Python, SQL, Rust]
+
 links:
   - name: GitHub
     icon: github
