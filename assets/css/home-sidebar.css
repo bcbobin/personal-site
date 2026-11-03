@@ -91,10 +91,9 @@ a { color: inherit; }
 :root[data-theme="dark"] .theme-toggle .sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .moon { display: block; }
 
+/* The logo image carries its own glow around the ring; pull it left so the ring lines up with the text */
 .avatar {
-    border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, .12);
-    margin-bottom: 22px;
+    margin: -12px 0 10px -12px;
 }
 
 h1, h2, h3 { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; }
