@@ -4,27 +4,35 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $d.name }} · {{ $d.role }}</title>
+    <script>
+        // Apply the saved or system theme before first paint. Same key PaperMod uses, so the 404 page matches.
+        (function () {
+            var t;
+            try { t = localStorage.getItem("pref-theme"); } catch (e) {}
+            if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            document.documentElement.dataset.theme = t;
+        })();
+    </script>
+    <title>{{ site.Title }}</title>
     <meta name="description" content="{{ site.Params.description }}">
-    <meta name="author" content="{{ $d.name }}">
+    <meta name="author" content="{{ site.Params.author }}">
     <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="icon" href="{{ "favicon.ico" | absURL }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | absURL }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | absURL }}">
+    <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | absURL }}">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ $d.name }} · {{ $d.role }}">
+    <meta property="og:site_name" content="{{ site.Params.author }}">
+    <meta property="og:title" content="{{ site.Title }}">
     <meta property="og:description" content="{{ site.Params.description }}">
     <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:image" content="{{ index site.Params.images 0 | absURL }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ site.Title }}">
+    <meta name="twitter:description" content="{{ site.Params.description }}">
+    <meta name="twitter:image" content="{{ index site.Params.images 0 | absURL }}">
+    {{- partial "templates/schema_json.html" . }}
     {{- $img := resources.Get "images/profile-pic.webp" }}
-    <meta property="og:image" content="{{ $img.Permalink }}">
-    <script type="application/ld+json">
-    {{ dict
-        "@context" "https://schema.org"
-        "@type" "Person"
-        "name" $d.name
-        "jobTitle" $d.role
-        "url" .Permalink
-        "image" $img.Permalink
-        "sameAs" (slice "https://github.com/bcbobin" "https://www.linkedin.com/in/bogdanbobin/" "https://ko-fi.com/bcbobin" "https://charadesnight.com")
-      | jsonify | safeJS }}
-    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -34,7 +42,13 @@
 <body>
 <div class="layout">
     <aside class="side">
+        <div class="side-top">
         <img class="avatar" src="{{ $img.RelPermalink }}" width="112" height="112" alt="{{ $d.name }}">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between light and dark theme" title="Toggle theme">
+            <svg class="sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <svg class="moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </button>
+        </div>
         <h1>{{ $d.name }}</h1>
         <p class="role">{{ $d.role }}</p>
         <p class="tagline">{{ $d.tagline }}</p>
@@ -102,5 +116,12 @@
         </footer>
     </main>
 </div>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", function () {
+        var t = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = t;
+        try { localStorage.setItem("pref-theme", t); } catch (e) {}
+    });
+</script>
 </body>
 </html>

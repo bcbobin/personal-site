@@ -1,12 +1,24 @@
 baseURL: https://bogdanbobin.com/
 languageCode: en-us
-title: Bogdan Bobin
+title: Bogdan Bobin – Software Developer
+enableRobotsTXT: true
+# No blog yet, so skip the empty /tags/ and /categories/ pages (they'd only clutter the sitemap)
+disableKinds: [taxonomy, term]
 theme: ["PaperMod"]
 
 params:
-  description: "Bogdan Bobin is a software developer at Miovision building TypeScript, Angular and Next.js web apps, and the maker of Holiday Charades."
+  description: "Bogdan Bobin is a software developer in Ontario, Canada, building TypeScript, Angular and Next.js web apps at Miovision, and the maker of Holiday Charades."
   author: Bogdan Bobin
-  images: ["images/profile-pic.webp"]
+  images: ["images/og.png"]
+  label:
+    text: Bogdan Bobin
+  schema:
+    publisherType: Person
+    sameAs:
+      - https://github.com/bcbobin
+      - https://www.linkedin.com/in/bogdanbobin/
+      - https://ko-fi.com/bcbobin
+      - https://charadesnight.com/
   profileMode:
     enabled: true
     title: "Bogdan Bobin" # optional default will be site title
