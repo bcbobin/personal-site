@@ -1,0 +1,106 @@
+{{- $d := site.Data.site -}}
+<!doctype html>
+<html lang="{{ site.LanguageCode }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ $d.name }} · {{ $d.role }}</title>
+    <meta name="description" content="{{ site.Params.description }}">
+    <meta name="author" content="{{ $d.name }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ $d.name }} · {{ $d.role }}">
+    <meta property="og:description" content="{{ site.Params.description }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    {{- $img := resources.Get "images/profile-pic.webp" }}
+    <meta property="og:image" content="{{ $img.Permalink }}">
+    <script type="application/ld+json">
+    {{ dict
+        "@context" "https://schema.org"
+        "@type" "Person"
+        "name" $d.name
+        "jobTitle" $d.role
+        "url" .Permalink
+        "image" $img.Permalink
+        "sameAs" (slice "https://github.com/bcbobin" "https://www.linkedin.com/in/bogdanbobin/" "https://ko-fi.com/bcbobin" "https://charadesnight.com")
+      | jsonify | safeJS }}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    {{- $css := resources.Get "css/home-sidebar.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+</head>
+<body>
+<div class="layout">
+    <aside class="side">
+        <img class="avatar" src="{{ $img.RelPermalink }}" width="112" height="112" alt="{{ $d.name }}">
+        <h1>{{ $d.name }}</h1>
+        <p class="role">{{ $d.role }}</p>
+        <p class="tagline">{{ $d.tagline }}</p>
+        <nav class="toc" aria-label="Sections">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+        </nav>
+        <ul class="links">
+            {{- range $d.links }}
+            <li><a href="{{ .url }}">{{ partial "site-icon.html" .icon }} {{ .name }}</a></li>
+            {{- end }}
+        </ul>
+        <a class="btn" href="{{ $d.resume }}">{{ partial "site-icon.html" "file" }} Download resume</a>
+    </aside>
+
+    <main class="content">
+        <section id="about">
+            <h2>About</h2>
+            <p>{{ $d.about }}</p>
+        </section>
+
+        <section id="projects">
+            <h2>Personal projects</h2>
+            {{- range $d.projects }}
+            <article class="project">
+                <div class="project-head">
+                    <h3><a href="{{ .url }}">{{ .name }}</a></h3>
+                    <a class="host" href="{{ .url }}">{{ (urls.Parse .url).Host }} {{ partial "site-icon.html" "external" }}</a>
+                </div>
+                <p>{{ .description }}</p>
+                <p class="tags">{{ delimit .tags " · " }}</p>
+                {{- with .repo }}<p class="repo"><a href="{{ . }}">{{ partial "site-icon.html" "github" }} View source</a></p>{{ end }}
+            </article>
+            {{- end }}
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            {{- range $d.experience }}
+            <div class="job">
+                <div class="job-head">
+                    <h3>{{ .role }}</h3>
+                    <span class="when">{{ .when }}</span>
+                </div>
+                <p class="org">{{ .org }}</p>
+                <p>{{ .summary }}</p>
+            </div>
+            {{- end }}
+            {{- with $d.education }}
+            <h2 class="sub">Education</h2>
+            <div class="job">
+                <div class="job-head">
+                    <h3>{{ .degree }}</h3>
+                    <span class="when">{{ .when }}</span>
+                </div>
+                <p class="org">{{ .school }}</p>
+            </div>
+            {{- end }}
+        </section>
+
+        <footer>
+            <p>Like something I made? <a href="https://ko-fi.com/bcbobin">Support me on Ko-fi</a>.</p>
+            <p class="fine">&copy; {{ now.Year }} {{ $d.name }}</p>
+        </footer>
+    </main>
+</div>
+</body>
+</html>
