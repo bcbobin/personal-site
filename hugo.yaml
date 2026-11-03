@@ -1,10 +1,23 @@
 baseURL: https://bogdanbobin.com
 languageCode: en-us
-title: Bogdan Bobin
+title: Bogdan Bobin – Software Developer
+enableRobotsTXT: true
+# No blog yet, so skip the empty /tags/ and /categories/ pages (they'd only clutter the sitemap)
+disableKinds: [taxonomy, term]
 theme: ["PaperMod"]
 
 params:
-  images: ["images/papermod-cover.png"]
+  description: "Bogdan Bobin is a software developer in Ontario, Canada, and a University of Waterloo Computer Engineering grad, building web apps with TypeScript, Angular, Next.js and Python."
+  author: Bogdan Bobin
+  images: ["images/og.png"]
+  label:
+    text: Bogdan Bobin
+  schema:
+    publisherType: Person
+    sameAs:
+      - https://github.com/bcbobin
+      - https://www.linkedin.com/in/bogdanbobin/
+      - https://ko-fi.com/bcbobin
   profileMode:
     enabled: true
     title: "Bogdan Bobin" # optional default will be site title
