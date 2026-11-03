@@ -1,22 +1,33 @@
-baseURL: https://bogdanbobin.com
+baseURL: https://bogdanbobin.com/
 languageCode: en-us
 title: Bogdan Bobin
 theme: ["PaperMod"]
 
 params:
-  images: ["images/papermod-cover.png"]
+  description: "Bogdan Bobin is a software developer at Miovision building TypeScript, Angular and Next.js web apps, and the maker of Holiday Charades."
+  author: Bogdan Bobin
+  images: ["images/profile-pic.webp"]
   profileMode:
     enabled: true
     title: "Bogdan Bobin" # optional default will be site title
-    subtitle: "Hello! This is still very much under construction, but thank you for dropping by!"
+    subtitle: "Software Developer · I build web apps at Miovision, and small, useful things on the side."
     imageUrl: "/images/profile-pic.webp" # optional
-    imageTitle: "Profile Picture" # optional
+    imageTitle: "Bogdan Bobin" # optional
     imageWidth: 120 # custom size
     imageHeight: 120 # custom size
     buttons:
-      - name: Github
-        url: "https://github.com/bcbobin/"
+      - name: Projects
+        url: "#projects"
       - name: Resume
         url: "files/Resume_FullTime_2024.pdf"
       - name: Contact
         url: "mailto:contact@bogdanbobin.com"
+  socialIcons:
+    - name: github
+      url: "https://github.com/bcbobin"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/bogdanbobin/"
+    - name: email
+      url: "mailto:contact@bogdanbobin.com"
+    - name: kofi
+      url: "https://ko-fi.com/bcbobin"

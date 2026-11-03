@@ -1,0 +1,59 @@
+# Shared home-page content. Every layout reads from here, so edit text in one place.
+name: Bogdan Bobin
+role: Software Developer
+tagline: I build web apps at Miovision, and small, useful things on the side.
+about: >-
+  I'm a software developer with five years of experience shipping TypeScript, Angular and
+  Next.js applications, from real-time Kafka video overlays to permission systems and
+  hardware integrations. I studied Computer Engineering at the University of Waterloo, mentor
+  co-op students, and enjoy picking up new languages and tools. Outside of work you'll find me
+  playing guitar, running a D&D table, or losing at chess.
+resume: /files/Resume_FullTime_2024.pdf
+
+links:
+  - name: GitHub
+    icon: github
+    url: https://github.com/bcbobin
+  - name: LinkedIn
+    icon: linkedin
+    url: https://www.linkedin.com/in/bogdanbobin/
+  - name: Email
+    icon: email
+    url: mailto:contact@bogdanbobin.com
+  - name: Ko-fi
+    icon: kofi
+    url: https://ko-fi.com/bcbobin
+
+projects:
+  - name: Holiday Charades
+    url: https://charadesnight.com
+    repo: https://github.com/bcbobin/charades
+    description: >-
+      A free, phone-friendly charades game for two teams sharing one phone. Themed word lists
+      for every major holiday, a round timer and scoring, with no app or sign-up.
+    tags: [JavaScript, HTML/CSS, SEO, GitHub Pages]
+
+experience:
+  - role: Software Developer
+    org: Miovision
+    when: 2021 – present
+    summary: >-
+      Full-stack work on a TypeScript/Angular and Next.js monorepo: real-time Kafka video
+      overlays, a permissions and roles revamp, new controller support, and co-op mentoring.
+  - role: Software Developer Co-op
+    org: Miovision
+    when: 2020
+    summary: Traffic timing-plan editor and splits-time algorithm in Angular and Spring.
+  - role: Tools Developer Co-op
+    org: OpenText
+    when: 2019
+    summary: Internal resource-tracking app in Spring and Oracle SQL.
+  - role: Network Automation Co-op
+    org: The Economical Insurance Group
+    when: 2018 – 2019
+    summary: Flask app for Cisco guest accounts that earned the company's top employee award.
+
+education:
+  degree: BASc, Computer Engineering
+  school: University of Waterloo
+  when: 2016 – 2021

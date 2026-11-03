@@ -19,3 +19,8 @@
 
 # Go workspace file
 go.work
+
+# Hugo build output
+/public/
+/resources/_gen/
+.hugo_build.lock
